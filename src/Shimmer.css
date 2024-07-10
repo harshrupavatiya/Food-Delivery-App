@@ -1,0 +1,50 @@
+.shimmer-container {
+    width: 100%;
+    margin-top: 65px;
+    display: flex;
+    justify-content: space-evenly;
+    row-gap: 20px;
+    flex-wrap: wrap;
+
+}
+
+.shimmer-item {
+    padding: 15px;
+    width: 22rem;
+    background: #f0f0f0;
+    border-radius: 4%;
+}
+
+.shimmer-img {
+    width: 20rem;
+    height: 12rem;
+    border-radius: 3%;
+    background-color: white;
+}
+
+.shimmer-data1, .shimmer-data2 {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.shimmer-data2 {
+    margin-top: 10px;
+}
+
+.shimmer-name {
+    width: 80%;
+    height: 22px;
+    background-color: white;
+}
+
+.shimmer-cuisines {
+    width: 65%;
+    height: 22px;
+    background-color: white;
+}
+
+.shimmer-price {
+    width: 27%;
+    background-color: white;
+}

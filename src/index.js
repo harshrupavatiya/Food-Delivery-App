@@ -1,17 +1,67 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import react from "react";
+import reactDOM from "react-dom/client";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import "./index.css";
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+import Hero from "./Hero";
+import Header from "./Header";
+import Body from "./Body";
+import About from "./About";
+import Contact from "./Contact";
+import RestaurentMenu from "./RestaurentMenu";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./Cart";
+
+function App() {
+  return (
+    <Provider store={appStore}>
+      <div className="wrapper">
+        <Header />
+        <Outlet />
+        {/* <Footer /> */}
+      </div>
+    </Provider>
+  );
+}
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: (
+          <div>
+            <Hero />
+            <Body />
+          </div>
+        ),
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/restaurent/:resID",
+        element: <RestaurentMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />
+      }
+    ],
+  },
+]);
+
+const root = reactDOM.createRoot(document.querySelector("#root"));
+
+root.render(<RouterProvider router={appRouter} />);
+
+export default App;
